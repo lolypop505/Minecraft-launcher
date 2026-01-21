@@ -1,0 +1,156 @@
+﻿<Page x:Class="launch.Views.Profile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:launch.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="880"
+      Title="Profile">
+
+    <Grid>
+        <Grid Background="{StaticResource BG}" Panel.ZIndex="0">
+            <Grid.Effect>
+                <BlurEffect Radius="5"/>
+            </Grid.Effect>
+        </Grid>
+
+        <Border Background="#8B2B8B" Opacity="0.5" Margin="80 130 80 90" Panel.ZIndex="0"/>
+        <StackPanel>
+            <StackPanel Margin="80 70 80 0" HorizontalAlignment="Left" Orientation="Horizontal">
+                <RadioButton Name="BtnProfile" Click="BtnProfile_Click" IsChecked="True" Content="профиль" Style="{StaticResource radioBtn}" Width="200" Height="50"/>
+                <RadioButton Name="BtnSubscription" Click="BtnSubscription_Click" Content="подписка" Style="{StaticResource radioBtn}" Width="200" Height="50" Margin="20 0 0 0"/>
+                <RadioButton Name="BtnSetting" Click="BtnSetting_Click" Content="управление" Style="{StaticResource radioBtn}" Width="200" Height="50" Margin="90 0 0 0"/>
+            </StackPanel>
+            <Grid>
+                <StackPanel Margin="110 40 110 0" Name="profilePage" Visibility="Visible">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Логин: " Style="{StaticResource BtnText}" />
+                        <TextBox Name="loginTB" IsReadOnly="True" Opacity="0.7" Width="200" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                        <TextBlock Text="Игровой ник: " Style="{StaticResource BtnText}" Margin="20 0 0 0"/>
+                        <TextBox Name="nickNameTB" MaxLength="49" TextChanged="Text_TextChanged" Width="170" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <TextBlock Text="О себе: " Style="{StaticResource BtnText}"/>
+                        <TextBox Name="personalInformationTB" MaxLength="150" TextChanged="Text_TextChanged" Width="565" Height="120" TextWrapping="Wrap" Style="{StaticResource TextBox}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <TextBlock Text="Телеграм: " Style="{StaticResource BtnText}"/>
+                        <TextBox Name="telegramTB" MaxLength="100" TextChanged="Text_TextChanged" Width="307" Style="{StaticResource TextBox}" Margin="10 0 0 0" PreviewTextInput="newTelegramTB_PreviewTextInput" KeyDown="newTelegramTB_KeyDown"/>
+                        <TextBlock Text="Ищу друзей: " Style="{StaticResource BtnText}" Margin="20 0 0 0"/>
+                        <Viewbox Width="40" Height="35">
+                            <CheckBox Name="lookingFriengsTB" Style="{StaticResource checkBox}"/>
+                        </Viewbox>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                        <TextBlock Text="Скин: " Style="{StaticResource BtnText}"/>
+                        <TextBox Name="mySkinTB" IsReadOnly="True" Opacity="0.7" Width="516" Style="{StaticResource TextBox}" Margin="25 0 0 0">
+                            <TextBox.ToolTip>
+                                <ToolTip Placement="Bottom" PlacementRectangle="0,0,210,300" Background="#8B2B8B" BorderBrush="White" BorderThickness="4">
+                                    <Image Name="imgSkin" Source="Images/skinSteve.png"/>
+                                </ToolTip>
+                            </TextBox.ToolTip>
+                        </TextBox>
+                        <Button Name="btnUpdateSkin" Click="btnUpdateSkin_Click" Style="{StaticResource ImageBtn}" Template="{StaticResource btn}" Width="40" Margin="10 0 0 0">
+                            <Button.ToolTip>
+                                <ToolTip Placement="Right" PlacementRectangle="0,0,100,70" VerticalOffset="15" Background="#8B2B8B" BorderBrush="White" BorderThickness="3">
+                                    <TextBlock FontSize="24" Text="загрузить скин" Style="{StaticResource BtnText}"/>
+                                </ToolTip>
+                            </Button.ToolTip>
+                            <Button.Resources>
+                                <ImageSource x:Key="Img">Images/BtnSearch.png</ImageSource>
+                                <ImageSource x:Key="ImgTrig">Images/BtnSearchTrig.png</ImageSource>
+                            </Button.Resources>
+                        </Button>
+                    </StackPanel>
+                    <Grid Margin="0 10 0 0">
+                        <Button Content="сохранить" Name="btnUpdateUserInfo" Click="btnUpdateUserInfo_Click" Style="{StaticResource ImageButton}" HorizontalAlignment="Right"/>
+                        <Button Content="изменить пароль" Name="btnPasswordChange" Click="btnPasswordChange_Click" Style="{StaticResource ImageButton}" HorizontalAlignment="Left"/>
+                    </Grid>
+                </StackPanel>
+                <StackPanel Margin="110 40 110 0" Name="passwordChangePage" Visibility="Hidden">
+                    <Image Source="Images/ImageBG.png" Height="150" Stretch="UniformToFill" StretchDirection="DownOnly" />
+                    <Grid  Margin="0 20 0 0">
+                        <TextBlock Text="новый пароль: " Style="{StaticResource BtnText}" />
+                        <TextBox TextChanged="Text_TextChanged" HorizontalAlignment="Right" Name="newPasswordTB" Width="355" Style="{StaticResource TextBox}"/>
+                    </Grid>
+                    <Grid Margin="0 10">
+                        <TextBlock Text="подтвердите пароль: " Style="{StaticResource BtnText}" />
+                        <TextBox TextChanged="Text_TextChanged" HorizontalAlignment="Right" Name="newChangePasswordTB" Width="355" Style="{StaticResource TextBox}"/>
+                    </Grid>
+                    <Grid Margin="0 10 0 0">
+                        <Button Name="btnUpdatePassword" Click="btnUpdatePassword_Click" Content="подтвердить" Style="{StaticResource ImageButton}" HorizontalAlignment="Right"/>
+                        <Button Name="btnBack" Click="btnBack_Click" Content="назад" Style="{StaticResource ImageButton}" HorizontalAlignment="Left"/>
+                    </Grid>
+                </StackPanel>
+                <Grid Margin="110 40 110 0" Name="subscriptionPage" Visibility="Hidden">
+                    <ScrollViewer  HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                        <StackPanel Name="Subcriptions" Orientation="Horizontal">
+                            <!--<Grid Width="210" Height="300" Background="#FF4C1C64" Margin="0 0 15 0">
+                                <Image Source="Images/imageSub1.png" Opacity="0.3" Margin="0,0,0,80"/>
+                                <TextBlock Text="железо" Style="{StaticResource BtnText}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Margin="0 35 0 0" FontSize="36"/>
+                                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <TextBlock Name="subscriptionDescription1" Text="Доступ к сборке и ее обновлениям" Width="160" TextWrapping="Wrap" Style="{StaticResource BtnText}" TextAlignment="Center"/>
+                                    <TextBlock Name="gg" Text="380 руб" Width="160" TextWrapping="Wrap" Style="{StaticResource BtnText}" TextAlignment="Center" Margin="0 10 0 0"/>
+                                </StackPanel>
+                                <Button Width="170" Content="оформлена" Style="{StaticResource ImageButton}" VerticalAlignment="Bottom" Margin="0 0 0 20" Opacity="0.6"/>
+                            </Grid>-->
+                            <!--<Grid Width="210" Height="280" Background="#FF4C1C64" Margin="0 0 15 0">
+                                <Image Source="Images/imageSub2.png" Opacity="0.3" Margin="0,0,0,90"/>
+                                <TextBlock Text="аметист" Style="{StaticResource BtnText}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Margin="0 35 0 0" FontSize="36"/>
+                                <TextBlock Name="subscriptionDescription2" Text="Доступ к сборке и ее обновлениям и ДЛС" Width="160" TextWrapping="Wrap" Style="{StaticResource BtnText}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                                <Button Name="BtnSub2" Click="BtnSub2_Click" Width="170" Content="оформить" Style="{StaticResource ImageButton}" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
+                            </Grid>
+                            <Grid Width="210" Height="280" Background="#FF4C1C64">
+                                <Image Source="Images/imageSub3.png" Opacity="0.3" Margin="0,0,0,80"/>
+                                <TextBlock Text="игнис" Style="{StaticResource BtnText}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="30" Margin="0 35 0 0" FontSize="36"/>
+                                <TextBlock Name="subscriptionDescription3" Text="Полный доступ и поддержка разработчиков" Width="190" TextWrapping="Wrap" Style="{StaticResource BtnText}" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
+                                <Button Name="BtnSub3" Click="BtnSub3_Click" Width="170" Content="оформить" Style="{StaticResource ImageButton}" VerticalAlignment="Bottom" Margin="0 0 0 25"/>
+                            </Grid>-->
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+                <Grid Margin="110 40 110 0" Name="subscriptionProcessPage" Visibility="Hidden">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="10 0 0 0">
+                            <TextBlock Text="Будет действовать от: " Style="{StaticResource BtnText}" />
+                            <TextBox Name="dateFrom" IsReadOnly="True" Opacity="0.7" Width="300" Style="{StaticResource TextBox}"/>
+                            <TextBlock Text="Будет действовать до: " Style="{StaticResource BtnText}" Margin="0 10 0 0"/>
+                            <TextBox Name="dateTo" IsReadOnly="True" Opacity="0.7" Width="300" Style="{StaticResource TextBox}"/>
+                            <TextBlock Text="Условия пописки: " Style="{StaticResource BtnText}" Margin="0 10 0 0"/>
+                            <TextBox Name="subscriptionDescription" IsReadOnly="True" Opacity="0.7" Width="300"  Height="130" Style="{StaticResource TextBox}" TextWrapping="Wrap"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Vertical" Margin="40 0 0 0">
+                            <TextBlock Text="Номер карты: " Style="{StaticResource BtnText}" />
+                            <TextBox Name="CardNumberBox" Width="300" Style="{StaticResource TextBox}"/>
+                            <TextBlock Text="Срок действия карты: " Margin="0 10 0 0" Style="{StaticResource BtnText}" />
+                            <TextBox Name="ExpiryBox" Width="300" Style="{StaticResource TextBox}"/>
+                            <TextBlock Text="CVV код: " Style="{StaticResource BtnText}" />
+                            <TextBox Name="CvvBox" Width="300"  Style="{StaticResource TextBox}"/>
+
+                            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                                <TextBlock Text="Сумма: " Style="{StaticResource BtnText}" />
+                                <TextBox Name="AmountText" IsReadOnly="True" Opacity="0.7" Width="206" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                            </StackPanel>
+                            <Button Name="PayButton" Click="PayButton_Click" Margin="0 10 0 0" Width="300" Content="опалатить" Style="{StaticResource ImageButton}" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+                <StackPanel Margin="110 40 110 0" Name="settingPage" Visibility="Hidden">
+                    <Grid>
+                        <Image Source="Images/ImageBG.png" Height="230" Stretch="UniformToFill" StretchDirection="DownOnly" />
+                        <TextBlock Text="Copyright © Lost Souls 2023-2025. 
+                                   Все права защищены." Style="{StaticResource BtnText}" TextWrapping="Wrap" TextAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 10 10"/>
+                    </Grid>
+                    <Grid Margin="0 30">
+                        <Button Name="btnDeleteAccount" Click="btnDeleteAccount_Click" Width="300" Content="удалить аккаунт" Style="{StaticResource ImageButton}" HorizontalAlignment="Right"/>
+                        <Button Name="btnChangeAccount" Click="btnChangeAccount_Click" Width="300" Content="сменить аккаунт" Style="{StaticResource ImageButton}" HorizontalAlignment="Left"/>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <Border Visibility="Hidden" Name="errorMessage" Margin="80 0" Height="50" VerticalAlignment="Bottom" BorderBrush="White" BorderThickness="4" Background="Transparent">
+            <TextBlock Name="textErrMes" Padding="17 5 0 0" Text="пароли не совпадают !" Style="{StaticResource BtnText}"/>
+        </Border>
+    </Grid>
+</Page>

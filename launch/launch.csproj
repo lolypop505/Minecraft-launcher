@@ -1,0 +1,169 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Views\Images\Background.png" />
+    <None Remove="Views\Images\btnArrowTrig.png" />
+    <None Remove="Views\Images\btnBlocked.png" />
+    <None Remove="Views\Images\btnBlockedTrig.png" />
+    <None Remove="Views\Images\BtnCollapseTrig.png" />
+    <None Remove="Views\Images\BtnDisliked.png" />
+    <None Remove="Views\Images\BtnDislikedTrig.png" />
+    <None Remove="Views\Images\BtnExit.png" />
+    <None Remove="Views\Images\BtnExitTrig.png" />
+    <None Remove="Views\Images\BtnImage.png" />
+    <None Remove="Views\Images\BtnImageTrig.png" />
+    <None Remove="Views\Images\BtnLiked.png" />
+    <None Remove="Views\Images\BtnLikedTrig.png" />
+    <None Remove="Views\Images\btnLitter.png" />
+    <None Remove="Views\Images\btnLitterTrig.png" />
+    <None Remove="Views\Images\BtnOk.png" />
+    <None Remove="Views\Images\BtnOkTrig.png" />
+    <None Remove="Views\Images\btnPause.png" />
+    <None Remove="Views\Images\btnPauseTrig.png" />
+    <None Remove="Views\Images\BtnSearch.png" />
+    <None Remove="Views\Images\BtnSearchTrig.png" />
+    <None Remove="Views\Images\btnStop.png" />
+    <None Remove="Views\Images\dc.png" />
+    <None Remove="Views\Images\dcTrig.png" />
+    <None Remove="Views\Images\ErrorIcon.png" />
+    <None Remove="Views\Images\imageBG.png" />
+    <None Remove="Views\Images\InfoIcon.png" />
+    <None Remove="Views\Images\Logo.png" />
+    <None Remove="Views\Images\MenuBtnAssembly.png" />
+    <None Remove="Views\Images\MenuBtnAssemblyTrig.png" />
+    <None Remove="Views\Images\MenuBtnDownload.png" />
+    <None Remove="Views\Images\menuBtnExit.png" />
+    <None Remove="Views\Images\menuBtnExitTrig.png" />
+    <None Remove="Views\Images\MenuBtnFriends.png" />
+    <None Remove="Views\Images\MenuBtnHelpdesk.png" />
+    <None Remove="Views\Images\MenuBtnHome.png" />
+    <None Remove="Views\Images\MenuBtnNews.png" />
+    <None Remove="Views\Images\MenuBtnProfile.png" />
+    <None Remove="Views\Images\MenuBtnSettings.png" />
+    <None Remove="Views\Images\MenuBtnSub.png" />
+    <None Remove="Views\Images\MenuBtnSubTrig.png" />
+    <None Remove="Views\Images\MenuBtnUsers.png" />
+    <None Remove="Views\Images\MenuBtnUsersTrig.png" />
+    <None Remove="Views\Images\noImage.png" />
+    <None Remove="Views\Images\QRCode.png" />
+    <None Remove="Views\Images\QuestionIcon.png" />
+    <None Remove="Views\Images\skinSteve.png" />
+    <None Remove="Views\Images\StarNether.png" />
+    <None Remove="Views\Images\tg.png" />
+    <None Remove="Views\Images\tgTrig.png" />
+    <None Remove="Views\Images\vk.png" />
+    <None Remove="Views\Images\vkTrig.png" />
+    <None Remove="Views\Images\WarningIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Remove="Views\AppStyles.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="AppStyles.xaml" />
+    <Resource Include="Views\Fonts\Pixelizer.ttf" />
+    <Resource Include="Views\Images\Background.png" />
+    <Resource Include="Views\Images\btnArrowTrig.png" />
+    <Resource Include="Views\Images\btnBlocked.png" />
+    <Resource Include="Views\Images\btnBlockedTrig.png" />
+    <Resource Include="Views\Images\BtnCollapse.png" />
+    <Resource Include="Views\Images\BtnCollapseTrig.png" />
+    <Resource Include="Views\Images\BtnDisliked.png" />
+    <Resource Include="Views\Images\BtnDislikedTrig.png" />
+    <Resource Include="Views\Images\BtnExit.png" />
+    <Resource Include="Views\Images\BtnExitTrig.png" />
+    <Resource Include="Views\Images\BtnImage.png" />
+    <Resource Include="Views\Images\BtnImageTrig.png" />
+    <Resource Include="Views\Images\BtnLiked.png" />
+    <Resource Include="Views\Images\BtnLikedTrig.png" />
+    <Resource Include="Views\Images\btnLitter.png" />
+    <Resource Include="Views\Images\btnLitterTrig.png" />
+    <Resource Include="Views\Images\BtnOk.png" />
+    <Resource Include="Views\Images\BtnOkTrig.png" />
+    <Resource Include="Views\Images\btnPause.png" />
+    <Resource Include="Views\Images\btnPauseTrig.png" />
+    <Resource Include="Views\Images\BtnSearch.png" />
+    <Resource Include="Views\Images\BtnSearchTrig.png" />
+    <Resource Include="Views\Images\btnStop.png" />
+    <Resource Include="Views\Images\dc.png" />
+    <Resource Include="Views\Images\dcTrig.png" />
+    <Resource Include="Views\Images\entryWindowBG.png" />
+    <Resource Include="Views\Images\ErrorIcon.png" />
+    <Resource Include="Views\Images\imageBG.png" />
+    <Resource Include="Views\Images\InfoIcon.png" />
+    <Resource Include="Views\Images\Logo.png" />
+    <Resource Include="Views\Images\MenuBtnAssembly.png" />
+    <Resource Include="Views\Images\MenuBtnAssemblyTrig.png" />
+    <Resource Include="Views\Images\MenuBtnDownloadTrig.png" />
+    <Resource Include="Views\Images\menuBtnExit.png" />
+    <Resource Include="Views\Images\menuBtnExitTrig.png" />
+    <Resource Include="Views\Images\MenuBtnHomeTrig.png" />
+    <Resource Include="Views\Images\MenuBtnSettingsTrig.png" />
+    <Resource Include="Views\Images\MenuBtnHelpdeskTrig.png" />
+    <Resource Include="Views\Images\MenuBtnFriendsTrig.png" />
+    <Resource Include="Views\Images\MenuBtnNewsTrig.png" />
+    <Resource Include="Views\Images\MenuBtnDownload.png" />
+    <Resource Include="Views\Images\MenuBtnFriends.png" />
+    <Resource Include="Views\Images\MenuBtnHelpdesk.png" />
+    <Resource Include="Views\Images\MenuBtnHome.png" />
+    <Resource Include="Views\Images\MenuBtnNews.png" />
+    <Resource Include="Views\Images\MenuBtnProfile.png" />
+    <Resource Include="Views\Images\MenuBtnSettings.png" />
+    <Resource Include="Views\Images\btnArrow.png" />
+    <Resource Include="Views\Images\MenuBtnSub.png" />
+    <Resource Include="Views\Images\MenuBtnSubTrig.png" />
+    <Resource Include="Views\Images\MenuBtnUsers.png" />
+    <Resource Include="Views\Images\MenuBtnUsersTrig.png" />
+    <Resource Include="Views\Images\noImage.png" />
+    <Resource Include="Views\Images\QRCode.png" />
+    <Resource Include="Views\Images\QuestionIcon.png" />
+    <Resource Include="Views\Images\skinSteve.png" />
+    <Resource Include="Views\Images\StarNether.png" />
+    <Resource Include="Views\Images\tg.png" />
+    <Resource Include="Views\Images\tgTrig.png" />
+    <Resource Include="Views\Images\vk.png" />
+    <Resource Include="Views\Images\vkTrig.png" />
+    <Resource Include="Views\Images\WarningIcon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CmlLib.Core" Version="4.0.4" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="MySql.Data" Version="9.2.0" />
+    <PackageReference Include="System.Text.Json" Version="9.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

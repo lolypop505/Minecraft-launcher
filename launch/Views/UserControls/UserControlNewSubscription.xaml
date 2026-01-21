@@ -1,0 +1,44 @@
+﻿<UserControl x:Class="launch.Views.UserControls.UserControlNewSubscription"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:launch.Views.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Width="230" Height="320" Background="#FF4C1C64" Margin="10">
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top">
+            <Button Panel.ZIndex="3" Tag="{Binding TagBtnDel}" Name="btnDelete" Style="{StaticResource ImageBtn}" Template="{StaticResource btn}" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15 0 0 0">
+                <Button.ToolTip>
+                    <ToolTip Placement="Left" PlacementRectangle="0,0,60,70" VerticalOffset="10" Background="#8B2B8B" BorderBrush="White" BorderThickness="3">
+                        <TextBlock FontSize="24" Text="удалить" Style="{StaticResource BtnText}"/>
+                    </ToolTip>
+                </Button.ToolTip>
+                <Button.Resources>
+                    <ImageSource x:Key="Img">../Images/btnLitter.png</ImageSource>
+                    <ImageSource x:Key="ImgTrig">../Images/BtnLitterTrig.png</ImageSource>
+                </Button.Resources>
+            </Button>
+            <Button Name="btnIaActive" Click="btnIaActive_Click" Content="активна" Margin="10 10 0 0" Tag="{Binding tagBtnIsActive}" VerticalAlignment="Top" HorizontalAlignment="Left" Cursor="Hand">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" BorderBrush="#FF8000" BorderThickness="3" Height="40" Width="135">
+                            <TextBlock Name="iaActive" Padding="5" Text="{TemplateBinding Content}" Style="{StaticResource BtnText}" FontSize="25" Foreground="#FF8000" HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="iaActive"  Property="Foreground" Value="white"/>
+                                <Setter TargetName="border" Property="BorderBrush" Value="white"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+        </StackPanel>
+        <Image Panel.ZIndex="-1" Source="../Images/StarNether.png" Opacity="0.3" Margin="20,20,20,100"/>
+        <TextBox Name="nameTB" Text="{Binding NameSub}" Width="190" Style="{StaticResource TextBox}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Margin="0 55 0 0" FontSize="32" TextAlignment="Center"/>
+        <TextBox Name="descTB" Text="{Binding Description}" Width="190" Height="100" TextWrapping="Wrap" Style="{StaticResource TextBox}" TextAlignment="Center" Margin="0 95 0 110"/>
+        <TextBox Name="priceTB" Text="{Binding Price}" Width="190" Style="{StaticResource TextBox}" TextAlignment="Center" Margin="0 135 0 0"/>
+        <Button Name="btnSave" Click="btnSave_Click" Tag="{Binding TagBtnSave}" Width="190" Content="сохранить" Style="{StaticResource ImageButton}" VerticalAlignment="Bottom" Margin="0 0 0 15"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,93 @@
+﻿<Window x:Class="launch.EntryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:launch"
+        mc:Ignorable="d" Height="500" Width="400" 
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent">
+    <Grid>
+        <Grid Background="{StaticResource EntryWindowBG}" Panel.ZIndex="0">
+            <Grid.Effect>
+                <BlurEffect Radius="6"/>
+            </Grid.Effect>
+        </Grid>
+        <StackPanel Background="Transparent" Height="50" VerticalAlignment="Top" MouseDown="StackPanel_MouseDown"/>
+        <StackPanel Grid.Column="1" Width="100" Height="60" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0 0 10 0" >
+            <Button Style="{StaticResource ImageBtn}" Template="{StaticResource btn}" Width="50" Name="Collapse" Click="Collapse_Click">
+                <Button.Resources>
+                    <ImageSource x:Key="Img">Views/Images/BtnCollapse.png</ImageSource>
+                    <ImageSource x:Key="ImgTrig">Views/Images/BtnCollapseTrig.png</ImageSource>
+                </Button.Resources>
+            </Button>
+            <Button Style="{StaticResource ImageBtn}" Template="{StaticResource btn}" Width="50" Name="Clouze" Click="Clouze_Click">
+                <Button.Resources>
+                    <ImageSource x:Key="Img">Views/Images/BtnExit.png</ImageSource>
+                    <ImageSource x:Key="ImgTrig">Views/Images/BtnExitTrig.png</ImageSource>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+        <StackPanel HorizontalAlignment="Center" Margin="0 60 0 0" Visibility="Visible" Name="loginInPage">
+            <TextBlock Text="логин: " Style="{StaticResource BtnText}"/>
+            <TextBox Name="loginTB" MaxLength="50" Width="300" Style="{StaticResource TextBox}" TextChanged="loginTB_TextChanged" />
+            <TextBlock Text="пароль: " Style="{StaticResource BtnText}"/>
+            <PasswordBox Name="passwordTB" MaxLength="50" Width="300" Style="{StaticResource PasswordBox}"/>
+            <Grid Margin="0 20 0 0">
+                <TextBlock Text="запомнить меня " Style="{StaticResource BtnText}"/>
+                <Viewbox Width="38" Height="33" HorizontalAlignment="Right">
+                    <CheckBox IsChecked="True" Name="btnRememberMe" Style="{StaticResource checkBox}" HorizontalAlignment="Right"/>
+                </Viewbox>
+            </Grid>
+            <Button Width="300" Name="btnLogin" Click="btnLogin_Click" Height="50" Content="войти" Style="{StaticResource ImageButton}" HorizontalAlignment="Left" Margin="0 80 0 0"/>
+            <Button Width="300" Name="btnRegistration" Click="btnRegistration_Click" Height="50" Content="регистрация" Style="{StaticResource ImageButton}" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <StackPanel Name="registrationPage1" HorizontalAlignment="Center" Margin="0 60 0 0" Visibility="Hidden">
+            <TextBlock Text="логин: " Style="{StaticResource BtnText}"/>
+            <TextBox Name="newLoginTB" MaxLength="50" Width="300" Style="{StaticResource TextBox}" TextChanged="loginTB_TextChanged" />
+            <TextBlock Text="пароль: " Style="{StaticResource BtnText}"/>
+            <PasswordBox Name="newPasswordTB" MaxLength="50" Width="300" Style="{StaticResource PasswordBox}"/>
+            <TextBlock Text="подтвердить пароль: " Style="{StaticResource BtnText}"/>
+            <PasswordBox Name="newPasswordTwoTB" MaxLength="50" Width="300" Style="{StaticResource PasswordBox}"/>
+            <TextBlock Text="никнейм: " Style="{StaticResource BtnText}"/>
+            <TextBox Name="newNicknameTB" MaxLength="50" Width="300" Style="{StaticResource TextBox}" TextChanged="loginTB_TextChanged" />
+            <Button Name="btnNext" Click="btnNext_Click" Width="300" Height="50" Content="далее" Style="{StaticResource ImageButton}" HorizontalAlignment="Left" />
+            <Button Width="300" Name="btnBack1" Click="btnBack1_Click" Height="50" Content="назад" Style="{StaticResource ImageButton}" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <StackPanel Name="registrationPage2" HorizontalAlignment="Center" Margin="0 60 0 0" Visibility="Hidden">
+            <TextBlock Text="о себе: " Style="{StaticResource BtnText}"/>
+            <TextBox Name="newPersonalInformationTB" Width="300" Height="70" TextWrapping="Wrap" Style="{StaticResource TextBox}" MaxLength="150"/>
+            <TextBlock Text="телеграм: " Style="{StaticResource BtnText}"/>
+            <TextBox Name="newTelegramTB" MaxLength="100" Text="https://t.me/" Width="300" Style="{StaticResource TextBox}" PreviewKeyDown="newTelegramTB_KeyDown" PreviewTextInput="newTelegramTB_PreviewTextInput"/>
+            <Grid Margin="0 5 0 0">
+                <TextBlock Text="ищу друзей " Style="{StaticResource BtnText}"/>
+                <Viewbox HorizontalAlignment="Right" Width="38" Height="33" Margin="10 0 0 0" >
+                    <CheckBox IsChecked="True" Name="btnLookingFriengs" Style="{StaticResource checkBox}" HorizontalAlignment="Right"/>
+                </Viewbox>
+            </Grid>
+            <Grid Margin="0 5 0 0" Cursor="Hand">
+                <Button Click="viewHTTP" Width="260" HorizontalAlignment="Left" Cursor="Hand">
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="я согласен с условиями пользовательского соглашения и обработки персональных данных" HorizontalAlignment="Left" FontSize="17" Style="{StaticResource BtnText}"/>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="true">
+                                    <Setter TargetName="textBlock"  Property="Foreground" Value="#8B2B8B"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Viewbox HorizontalAlignment="Right" Width="38" Height="33" Margin="10 0 0 0" >
+                    <CheckBox Name="btnConsentPersonalData" Style="{StaticResource checkBox}" HorizontalAlignment="Right"/>
+                </Viewbox>
+            </Grid>
+            <Button Name="btnConfirm" Click="btnConfirm_Click" Width="300" Height="50" Content="подтвердить" Style="{StaticResource ImageButton}" HorizontalAlignment="Left" Margin="0 0 0 0"/>
+            <Button Width="300" Name="btnBack2" Click="btnBack2_Click" Height="50" Content="назад" Style="{StaticResource ImageButton}" HorizontalAlignment="Left"/>
+        </StackPanel>
+        <Border Name="errorMessage" Visibility="Hidden" Height="50" VerticalAlignment="Bottom" BorderBrush="White" BorderThickness="4" Background="Transparent">
+            <TextBlock FontSize="22" Name="textErrMes" TextAlignment="Center" Padding="0 8 0 0" Text="неверный логин или пароль !" Style="{StaticResource BtnText}"/>
+        </Border>
+    </Grid>
+</Window>
