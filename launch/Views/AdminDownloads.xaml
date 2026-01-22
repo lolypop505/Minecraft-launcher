@@ -1,0 +1,153 @@
+﻿<Page x:Class="launch.Views.AdminDownloads"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:launch.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="880"
+      Title="AdminDownloads">
+
+    <Grid>
+        <Grid Background="{StaticResource BG}" Panel.ZIndex="0">
+            <Grid.Effect>
+                <BlurEffect Radius="5"/>
+            </Grid.Effect>
+        </Grid>
+
+        <Border Background="#8B2B8B" Opacity="0.5" Margin="80 120 80 60"/>
+        <StackPanel>
+            <StackPanel Margin="80 60 90 0" HorizontalAlignment="Left" Orientation="Horizontal">
+                <RadioButton IsChecked="True" Click="btnAddDownload_Click" Name="btnAddDownload"  Content="добавить" Style="{StaticResource radioBtn}" Width="200" Height="50" />
+                <RadioButton Name="btnViewDownloads" Click="btnViewDownloads_Click" Content="редактировать" Style="{StaticResource radioBtn}" Width="220" Height="50" Margin="20 0 0 0"/>
+            </StackPanel>
+            <Grid>
+                <StackPanel Name="viewDownloadsPage" Margin="100 30 100 0" Visibility="Hidden">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="370"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <StackPanel Grid.Column="0">
+                            <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                                <TextBlock Text="Название: " Style="{StaticResource BtnText}" HorizontalAlignment="Left"/>
+                                <TextBox Name="nameTB" Width="230" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 10 0 20">
+                                <TextBlock Text="Треб. подписка: " Style="{StaticResource BtnText}" HorizontalAlignment="Left"/>
+                                <ComboBox Name="versionsBox" Width="155" Style="{StaticResource ComboBox}" Margin="10 0 0 0"/>
+                            </StackPanel>
+                            <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
+                                <TextBlock Text="Версия minecraft: " Style="{StaticResource BtnText}" Margin="0 10"/>
+                                <TextBox Name="versTB" Width="140" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                                <TextBlock Text="Вес сборки: " Style="{StaticResource BtnText}" Margin="0 0"/>
+                                <TextBox Name="weightTB" Width="180" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                                <TextBlock Text="ГБ" Style="{StaticResource BtnText}" Margin="5 0 0 0" HorizontalAlignment="Right"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 40 0 0">
+                                <TextBlock Text="Ссылка: " Style="{StaticResource BtnText}" Margin="0 0"/>
+                                <TextBox Name="urlTB" Width="255" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        
+                        <StackPanel Grid.Column="1">
+                            <TextBlock Grid.Column="1" Text="Описание" VerticalAlignment="Top" Style="{StaticResource BtnText}" Margin="10 0 0 0"/>
+                            <TextBox Grid.Column="1" Name="descTB" MaxLength="250"  Height="100" TextWrapping="Wrap" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                            <Border  Margin="10 10 0 10" Height="170" BorderBrush="white" BorderThickness="4">
+                                <Grid>
+                                    <Image Name="imageBitmap" Source="Images/noImage.png"/>
+                                    <Button VerticalAlignment="Top" HorizontalAlignment="Right" Name="btnViewFile" Click="btnViewFile_Click" Style="{StaticResource ImageBtn}" Template="{StaticResource btn}" Width="40" Margin="10 0 0 0">
+                                        <Button.Resources>
+                                            <ImageSource x:Key="Img">Images/BtnSearch.png</ImageSource>
+                                            <ImageSource x:Key="ImgTrig">Images/BtnSearchTrig.png</ImageSource>
+                                        </Button.Resources>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <Button x:Name="BtnLeft" Click="BtnLeft_Click" Style="{StaticResource ImageBtn}" Template="{StaticResource btn}" Width="55" Height="65" VerticalAlignment="Center" HorizontalAlignment="Left" RenderTransformOrigin="0.5,0.5" >
+                            <Button.Resources>
+                                <ImageSource x:Key="Img">Images/btnArrow.png</ImageSource>
+                                <ImageSource x:Key="ImgTrig">Images/BtnArrowTrig.png</ImageSource>
+                            </Button.Resources>
+                            <Button.RenderTransform>
+                                <ScaleTransform ScaleX="-1"/>
+                            </Button.RenderTransform>
+                        </Button>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <Button Name="btnSave" Click="btnSave_Click" Content="сохранить" Style="{StaticResource ImageButton}"/>
+                            <Button Name="btnDelete" Click="btnDelete_Click" Style="{StaticResource ImageBtn}" Template="{StaticResource btn}" Width="60" VerticalAlignment="Center" HorizontalAlignment="Right">
+                                <Button.ToolTip>
+                                    <ToolTip Placement="Left" PlacementRectangle="0,0,60,70" VerticalOffset="20" Background="#8B2B8B" BorderBrush="White" BorderThickness="3">
+                                        <TextBlock FontSize="24" Text="удалить" Style="{StaticResource BtnText}"/>
+                                    </ToolTip>
+                                </Button.ToolTip>
+                                <Button.Resources>
+                                    <ImageSource x:Key="Img">Images/btnLitter.png</ImageSource>
+                                    <ImageSource x:Key="ImgTrig">Images/BtnLitterTrig.png</ImageSource>
+                                </Button.Resources>
+                            </Button>
+                        </StackPanel>                       
+                        <Button x:Name="BtnRight" Click="BtnRight_Click" Style="{StaticResource ImageBtn}" Template="{StaticResource btn}" Width="55" Height="65" VerticalAlignment="Center" HorizontalAlignment="Right">
+                            <Button.Resources>
+                                <ImageSource x:Key="Img">Images/btnArrow.png</ImageSource>
+                                <ImageSource x:Key="ImgTrig">Images/BtnArrowTrig.png</ImageSource>
+                            </Button.Resources>
+                        </Button>
+                    </Grid>
+                </StackPanel>
+                <Grid Name="addDownloadPage" Margin="100 30 100 0" Visibility="Visible">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="370"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="0">
+                        <StackPanel Orientation="Horizontal" Margin="0 5 0 0">
+                            <TextBlock Text="Название: " Style="{StaticResource BtnText}" HorizontalAlignment="Left"/>
+                            <TextBox Name="newNameTB" Width="230" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 10">
+                            <TextBlock Text="Треб. подписка: " Style="{StaticResource BtnText}" HorizontalAlignment="Left"/>
+                            <ComboBox Name="newVersionsBox" Width="155" Style="{StaticResource ComboBox}" Margin="10 0 0 0"/>
+                        </StackPanel>
+                        <StackPanel Margin="0 20 0 0" Orientation="Horizontal">
+                            <TextBlock Text="Версия minecraft: " Style="{StaticResource BtnText}" Margin="0 10"/>
+                            <TextBox Name="newVersTB" Width="140" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
+                            <TextBlock Text="Вес сборки: " Style="{StaticResource BtnText}" Margin="0 0"/>
+                            <TextBox Name="newWeightTB" Width="180" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                            <TextBlock Text="ГБ" Style="{StaticResource BtnText}" Margin="5 0 0 0" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="0 20 0 35">
+                            <TextBlock Text="Ссылка: " Style="{StaticResource BtnText}" Margin="0 0"/>
+                            <TextBox Name="newUrlTB" Width="255" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                        </StackPanel>
+                        <Button Name="btnAdd" Click="btnAdd_Click" Width="370" Height="60" Content="добавить" Style="{StaticResource ImageButton}" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <TextBlock Grid.Column="1" Text="Описание" VerticalAlignment="Top" Style="{StaticResource BtnText}" Margin="10 0 0 0"/>
+                        <TextBox Grid.Column="1" Name="newDescTB" MaxLength="250"  Height="160" TextWrapping="Wrap" Style="{StaticResource TextBox}" Margin="10 0 0 0"/>
+                        <Border  Margin="10 10 0 10" Height="170" BorderBrush="white" BorderThickness="4">
+                            <Grid>
+                                <Image Name="newImageBitmap" Source="Images/noImage.png"/>
+                                <Button VerticalAlignment="Top" HorizontalAlignment="Right" Name="btnViewNewFile" Click="btnViewNewFile_Click" Style="{StaticResource ImageBtn}" Template="{StaticResource btn}" Width="40" Margin="10 0 0 0">
+                                    <Button.Resources>
+                                        <ImageSource x:Key="Img">Images/BtnSearch.png</ImageSource>
+                                        <ImageSource x:Key="ImgTrig">Images/BtnSearchTrig.png</ImageSource>
+                                    </Button.Resources>
+                                </Button>
+                            </Grid>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>
